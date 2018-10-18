@@ -1,0 +1,6 @@
+rootProject.name = 'jwt-zuul-gateway'
+include ':api-gateway'
+include ':auth-center'
+include ':backend-service'
+include ':user-service'
+

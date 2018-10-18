@@ -1,0 +1,7 @@
+server:
+  port: 8081
+
+knightech.security.jwt.secret: otherpeopledontknowit
+
+spring.data.mongodb.host: localhost
+spring.data.mongodb.port: 27017
