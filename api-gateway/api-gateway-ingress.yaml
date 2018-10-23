@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: pk-k8s.127.0.0.1.xip.io
+    http:
+      paths:
+      - path: /auth-center
+        backend:
+          serviceName: auth-center
+          servicePort: 8080
+      - path: /user-service
+        backend:
+          serviceName: user-service
+          servicePort: 8080
+      - path: /backend-service
+        backend:
+          serviceName: backend-service
+          servicePort: 8080

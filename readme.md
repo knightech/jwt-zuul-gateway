@@ -1,8 +1,27 @@
-### jwt-zuul-gateway
+[link to article](https://dzone.com/articles/quick-guide-to-microservices-with-kubernetes-sprin)
+
+#### k8s on docker for mac
+
+Spring Cloud Kubernetes requires access to Kubernetes API to get list of pods. Issue this command to enable:
+
+- kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
+
+**Then deploy the following projects:**
+
+* In the root parent project, issue: **gradle dockerPush** to build and push images to docker hub:
+
+    * user-service
+
+    * auth-center
+
+    * backend-service
+
+    * api-gateway
 
 ##### **auth-center**
+
 The service to issue the `JWT` token.
-- The client POST `{username,password}` to `/login`.
+- The client POST `{username,password}` to `/auth-center/login`.
 - This service will authenticate the username and password via `Spring Security`,
   generate the token, and issue it to client in a header value.
 
@@ -21,30 +40,35 @@ curl -X POST   http://localhost:8080/user/register   -H 'authorization: Bearer <
 
 Login with user with only USER role and you don't get access to backend/admin
 
-##### 2. **backend-service**
+##### **backend-service**
 The three simple services:
 - `/admin`
 - `/user`
 - `/guest`
  
-##### 3. **api-gateway**
+##### **api-gateway**
+
 The `Zuul` gateway:
+
 - Define `Zuul` routes to `auth-center` and `backend-service`.
+
 - Verify `JWT` token.
+
 - Define role-based auth via `Spring Security`:
-    - `/login` is public to all.
+    - `/auth-center/login` is public to all.
     - `/user/register` can only be accessed by role `ADMIN`.
     - `/backend/admin` can only be accessed by role `ADMIN`.
     - `/backend/user` can only be accessed by role `USER`.
     - `/backend/guest` is public to all.
 
-No token 401
-No access 403
+No token sends a 401 response whereas a token without permissions gives 403
 ```json
 curl -X GET   http://localhost:8080/backend/admin   -H 'authorization: Bearer <<<token for admin>>>'   -H 'content-type: application/json'
 ```
+
 Access 200!
-```
+```json
 curl -X GET   http://localhost:8080/backend/admin   -H 'authorization: Bearer <<<token for user>>>'   -H 'content-type: application/json'
 ```
+
 
