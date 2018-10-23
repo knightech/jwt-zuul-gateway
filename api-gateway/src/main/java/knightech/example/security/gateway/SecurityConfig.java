@@ -45,10 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                     .antMatchers(config.getUrl()).permitAll()
-                    .antMatchers("/user/register").hasAuthority("ADMIN")
-                    .antMatchers("/backend/admin").hasAuthority("ADMIN")
-                    .antMatchers("/backend/user").hasAuthority("USER")
-                    .antMatchers("/backend/guest").permitAll();
+                    .antMatchers("/user-service/register").hasAuthority("ADMIN")
+                    .antMatchers("/backend-service/admin").hasAuthority("ADMIN")
+                    .antMatchers("/backend-service/user").hasAuthority("USER")
+                    .antMatchers("/backend-service/guest").permitAll();
     }
 }
 

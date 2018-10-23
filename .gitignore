@@ -2,3 +2,4 @@
 .gradle
 .idea
 jwt-zuul-gateway.iml
+/**/out/

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class JwtAuthenticationConfig {
 
-    @Value("${knightech.security.jwt.url:/login}")
+    @Value("${knightech.security.jwt.url:/auth-center/login}")
     private String url;
 
     @Value("${knightech.security.jwt.header:Authorization}")

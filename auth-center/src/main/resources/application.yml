@@ -1,7 +1,10 @@
-server:
-  port: 8081
-
-knightech.security.jwt.secret: otherpeopledontknowit
-
-spring.data.mongodb.host: localhost
-spring.data.mongodb.port: 27017
+spring:
+  application:
+    name: auth-center
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}
+knightech:
+  security:
+    jwt:
+      secret: otherpeopledontknowit

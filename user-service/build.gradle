@@ -21,13 +21,14 @@ apply plugin: 'com.palantir.docker'
 
 group = 'petecknight'
 mainClassName = 'knightech.example.user.UserApp'
-
-bootJar {
-    version = '0.1.1'
-}
+version='0.1.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+bootRun {
+    jvmArgs = ["-Dserver.port=8083", "-Dspring.data.mongodb.uri=mongodb://mongo-user:mongo-password@localhost/admin"]
+}
 
 docker {
     dependsOn build

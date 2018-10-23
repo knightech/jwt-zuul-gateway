@@ -1,18 +1,17 @@
-server:
-  port: 8080
-
+spring:
+  application:
+    name: api-gateway-service
 zuul:
   routes:
     auth-center:
-      path: /login/**
-      url: http://127.0.0.1:8081/
+      path: /auth-center/login/**
       sensitiveHeaders: Cookie,Set-Cookie
       stripPrefix: false
     user-service:
-      path: /user/**
-      url: http://127.0.0.1:8083/
+      path: /user-service/**
     backend-service:
-      path: /backend/**
-      url: http://127.0.0.1:8082/
-
-knightech.security.jwt.secret: otherpeopledontknowit
+      path: /backend-service/**
+knightech:
+  security:
+    jwt:
+      secret: otherpeopledontknowit
