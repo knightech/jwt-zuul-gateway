@@ -52,10 +52,9 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version:'2.0.0.RELEASE'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes-ribbon', version:'0.3.0.BUILD-SNAPSHOT'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-sleuth', version:'2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version:'2.9.2'
     compile group: 'io.springfox', name: 'springfox-swagger2', version:'2.9.2'
     compile 'javax.xml.bind:jaxb-api:2.2.11'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
-    compile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.1"
 
 }
